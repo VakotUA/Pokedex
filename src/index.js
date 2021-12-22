@@ -8,7 +8,7 @@ import './Styles/header.css';
 function useForceUpdate(){
 	const [value, setValue] = useState(0);
 	if (value === 0) {}
-		return () => setValue(value => value + 1);
+	return () => setValue(value => value + 1);
 }
 
 function App() {
