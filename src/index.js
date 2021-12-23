@@ -92,8 +92,8 @@ function App() {
 		setPagination(newPagination);
 	}
 
-	// localStorage.clear();
-	// sessionStorage.clear();
+	localStorage.clear();
+	sessionStorage.clear();
 
 	useEffect(() => {
 		localStorage.clear();
