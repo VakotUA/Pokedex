@@ -160,6 +160,7 @@ function App() {
 					setStorage([]);
 				}}></li>
 				<li id="search-by-tag" className="tag-button active" onClick={() => {
+					setPage(1);
 					localStorage.clear();
 					sessionStorage.clear();
 					setSearch('');

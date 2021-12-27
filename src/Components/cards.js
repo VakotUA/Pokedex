@@ -35,26 +35,14 @@ function Cards(props) {
 			for(let i in keys) {
 				tags[i] = JSON.parse(sessionStorage.getItem(i));
 			}
-			tags.sort();
-			pokemons.forEach(pokemon => {
-				let pokeTags = getTags(pokemon);
-				pokeTags.sort();
-				counter = 0;
-				if (tags.length === pokeTags.length) {
-					for (let i = 0; i < tags.length; i++) {
-						if (tags[i] === pokeTags[i]) {
-							counter++;
-						}
-						else {
-							counter = 0;
-							break;
-						}
-					}
-					if (counter === tags.length) {
+			if (tags.length <= 2) {
+				pokemons.forEach(pokemon => {
+					let pokeTags = getTags(pokemon);
+					if (tags.every(item => pokeTags.includes(item))) {
 						result.push(pokemon);
 					}
-				}
-			});
+				});
+			}
 		}
 
 		// вывод всех покемонов (если нет фильтров)
@@ -62,7 +50,7 @@ function Cards(props) {
 			result = pokemons;
 		}
 
-		// сохранение результатов в localStorage (для быстрого перехода между страницам)
+		// сохранение результатов в localStorage (для быстрого перехода между страницами)
 		if (localStorage.length === 0) {
 			result.forEach(item => {
 				localStorage.setItem(localStorage.length, JSON.stringify(item));
