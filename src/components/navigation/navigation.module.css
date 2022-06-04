@@ -1,0 +1,83 @@
+.navigation {
+  position: fixed;
+  height: 70px;
+  min-width: 70px;
+  border-radius: 20px;
+  left: 50%;
+  bottom: 1.5rem;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(5px);
+  padding: 0 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  z-index: 1000;
+}
+
+.btn {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border: none;
+  box-shadow: none;
+  background-color: transparent;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  text-align: center;
+  background-color: transparent;
+}
+
+.btn:first-child {
+  left: 0;
+  transform: translateX(0);
+}
+.btn:last-child {
+  left: 100%;
+  transform: translateX(-100%);
+}
+
+.btn:hover,
+.btn:focus {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+.pages,
+.pagination {
+  min-width: 50px;
+  height: 50px;
+  position: relative;
+  background-color: #181818;
+  border-radius: 25px;
+  overflow: hidden;
+}
+
+.pagination:hover,
+.pages:hover {
+  min-width: 150px;
+}
+
+.pages > button,
+.pagination > .btn {
+  z-index: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.pages:hover > button,
+.pagination > .btn.active,
+.pagination:hover > .btn {
+  opacity: 1;
+  z-index: 1;
+  pointer-events: all;
+}
