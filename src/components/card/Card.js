@@ -44,6 +44,14 @@ function Cards(props) {
     baseExperience: null,
   })
 
+  const bgColor =
+    info.types.length > 0 ? `var(--bg-${info.types[0].type.name}, white)` : ''
+
+  const textColor =
+    info.types.length > 0
+      ? `var(--color-${info.types[0].type.name}, white)`
+      : ''
+
   useEffect(() => {
     getInfo(pokemon, (data) => {
       setInfo(data)
@@ -55,9 +63,7 @@ function Cards(props) {
       <div
         className={styles.image}
         style={{
-          background: `var(--bg-${
-            info.types.length > 0 ? info.types[0].type.name : ''
-          }, white)`,
+          background: bgColor,
         }}
       >
         <img src={info.image} alt="pokemon"></img>
@@ -67,9 +73,7 @@ function Cards(props) {
         <div className={styles.name}>
           <h6
             style={{
-              color: `var(--color-${
-                info.types.length > 0 ? info.types[0].type.name : ''
-              }, white)`,
+              color: textColor,
             }}
           >{`Experience ${info.baseExperience}`}</h6>
           <h1>{pokemon.name}</h1>
@@ -80,9 +84,7 @@ function Cards(props) {
             {info.types.map((type, index) => (
               <li
                 style={{
-                  background: `var(--bg-${
-                    info.types.length > 0 ? info.types[0].type.name : ''
-                  }, white)`,
+                  background: `var(--bg-${type.type.name}, white)`,
                 }}
                 key={index}
               >
@@ -93,17 +95,15 @@ function Cards(props) {
         </div>
       </div>
 
-      <div className={styles.stats}>
+      <div
+        className={styles.stats}
+        style={{
+          background: bgColor,
+        }}
+      >
         <ul>
           {info.stats.map((stat, index) => (
-            <li
-              style={{
-                background: `var(--bg-${
-                  info.types.length > 0 ? info.types[0].type.name : ''
-                }, white)`,
-              }}
-              key={index}
-            >
+            <li key={index}>
               <p>{stat.base_stat}</p>
               <p>
                 {stat.stat.name === 'hp' ? <FaHeartbeat /> : ''}
